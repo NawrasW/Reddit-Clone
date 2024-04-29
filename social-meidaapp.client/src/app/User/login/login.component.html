@@ -1,0 +1,38 @@
+<!-- login.component.html -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Login</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-5">
+      <div class="mt-5 md:mt-0 flex items-center justify-center">
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" class="mx-auto max-w-md">
+          <div class="mb-4">
+            <label for="email" class="block text-gray-700">Email</label>
+            <input type="text" class="form-input mt-1 block w-full" name="email" id="email" required ngModel>
+          </div>
+
+          <div class="mb-6">
+            <label for="password" class="block text-gray-700">Password</label>
+            <input type="password" class="form-input mt-1 block w-full" name="password" id="password" required ngModel>
+          </div>
+
+          <!-- Display red span if email or password is incorrect -->
+          <div class="text-center">
+            <button type="submit" class="button text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
+          </div>
+          <div *ngIf="loginForm.submitted && loginForm.controls['email'].invalid" class="text-red-500">
+            Email is required.
+          </div>
+          <div *ngIf="loginForm.submitted && loginForm.controls['password'].invalid" class="text-red-500">
+            Password is required.
+          </div>
+          <div *ngIf="loginForm.submitted && !loginForm.controls['email'].invalid && !loginForm.controls['password'].invalid" class="text-red-500">
+            Email or password is incorrect.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

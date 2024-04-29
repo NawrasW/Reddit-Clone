@@ -1,0 +1,23 @@
+<header class="header text-white p-4 flex justify-between items-center mt-0  ">
+  <i class='bx bxl-reddit' style='color:#e55106; font-size:50px;'></i>
+
+
+  <label>
+
+    <input type="text" placeholder="Search posts..." (input)="onSearchChange($event)" class="text-black border border-gray-300 rounded-md px-4 py-2 mb-4">
+  </label>
+  <div *ngIf="!loggedin()">
+    <button class="button text-whitefont-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" routerLink="/signin">Login</button>
+  </div>
+  <div *ngIf="loggedin()" class="d-flex gap-2">
+    <button class="btn btn-outline-dark" type="submit" routerLink="/signup/{{loggedinUserId}}">
+      <i class="bi bi-person-fill"></i>
+      {{loggedinUser}}
+    </button>
+    <button class="btn btn-outline-dark" type="submit" (click)="logout()" style="margin-left: 5px;">
+      <!-- Adjusted margin -->
+      <i class="bi bi-box-arrow-right"></i>
+      Logout
+    </button>
+  </div>
+</header>
