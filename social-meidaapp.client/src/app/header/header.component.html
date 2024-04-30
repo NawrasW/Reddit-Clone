@@ -1,0 +1,31 @@
+<header class="header text-white p-4 flex justify-between items-center mt-0  ">
+  <i class='bx bxl-reddit' style='color:#e55106; font-size:50px;'></i>
+
+
+  <label>
+
+    <input type="text" placeholder="Search posts..." (input)="onSearchChange($event)" class="text-black border border-gray-300 rounded-md px-4 py-2 mb-4">
+  </label>
+  <div *ngIf="!loggedin()">
+    <button class="button text-whitefont-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" routerLink="/signin">Login</button>
+  </div>
+  <div *ngIf="loggedin()" class="dropdown">
+    <div tabindex="0" role="button" class="btn rounded-full border border-black border-10 avatar" (click)="toggleDropdown()" aria-expanded="false">
+      <img src="https://cdn.icon-icons.com/icons2/2955/PNG/512/person_fill_icon_185522.png" alt="Avatar" />
+    </div>
+    <nav tabindex="0">
+      <ul [ngClass]="{ 'show': dropdownOpen }">
+        <li><a (click)="logout()">Sign Out</a></li>
+      </ul>
+    </nav>
+    <div class="flex flex-col">
+      <div>{{ loggedinUser }}</div>
+    </div>
+  </div>
+
+
+
+
+
+
+</header>
